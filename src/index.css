@@ -27,6 +27,23 @@
   --admin-shadow-md: 0 4px 20px rgba(16, 34, 43, 0.06);
   --admin-shadow-lg: 0 12px 40px rgba(16, 34, 43, 0.08);
   --admin-ring: 0 0 0 3px rgba(32, 93, 112, 0.12);
+
+  /* Responsive breakpoints (reference only — CSS modules use literal values) */
+  --admin-bp-xs: 480px;
+  --admin-bp-sm: 640px;
+  --admin-bp-md: 768px;
+  --admin-bp-lg: 1024px;
+  --admin-bp-xl: 1280px;
+
+  /* Layout shell metrics */
+  --admin-sidebar-w: 260px;
+  --admin-topbar-h: 64px;
+}
+
+@media (max-width: 1023.98px) {
+  :root {
+    --admin-topbar-h: 56px;
+  }
 }
 
 *,
@@ -37,6 +54,11 @@
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 html,
 body,
 #root {
@@ -45,18 +67,39 @@ body,
 
 body {
   min-height: 100vh;
+  /* dvh keeps mobile browsers' dynamic toolbars from clipping content */
+  min-height: 100dvh;
   font-family: var(--font-body);
   color: #10222b;
   background:
     radial-gradient(circle at 12% 12%, rgba(213, 90, 52, 0.14), transparent 24%),
     radial-gradient(circle at 88% 8%, rgba(32, 93, 112, 0.12), transparent 22%),
     linear-gradient(180deg, #faf6ef 0%, #f4efe8 48%, #f7f5f1 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-body.modal-open {
+body.modal-open,
+body.drawer-open {
   overflow: hidden;
+}
+
+/* Larger touch targets on phones */
+@media (max-width: 767.98px) {
+  button,
+  [role="button"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    touch-action: manipulation;
+  }
+  input,
+  select,
+  textarea {
+    /* iOS Safari zooms when input font-size < 16px; preserve declared size on desktop but enforce a minimum on phones */
+    font-size: max(16px, 1em);
+  }
 }
 
 button,

@@ -292,17 +292,17 @@ export default function RepairOrderManagement() {
                   const meta = STATUS_META[o.status] || STATUS_META.created;
                   return (
                     <tr key={o._id}>
-                      <td>
+                      <td data-label="Order No.">
                         <button className={styles.infoLink} onClick={() => openEdit(o)}>
                           {o.orderNo || String(o._id).slice(-6)}
                         </button>
                       </td>
-                      <td>
+                      <td data-label="Customer">
                         {o.customerId?.fullName || "-"}
                         <br />
                         <small style={{ color: "#7a9aaa" }}>{o.customerId?.phoneNo || ""}</small>
                       </td>
-                      <td>
+                      <td data-label="Vehicle">
                         {o.vehicleId
                           ? `${o.vehicleId.vehicleBrand || ""} ${o.vehicleId.vehicleModel || ""}`.trim() || "-"
                           : "-"}
@@ -311,8 +311,8 @@ export default function RepairOrderManagement() {
                           {o.vehicleId?.vehicleRegisterNo || ""}
                         </small>
                       </td>
-                      <td>{o.scheduledAt ? fmtDate(o.scheduledAt) : "Walk-in"}</td>
-                      <td>
+                      <td data-label="Scheduled">{o.scheduledAt ? fmtDate(o.scheduledAt) : "Walk-in"}</td>
+                      <td data-label="Status">
                         <span
                           className={styles.badge}
                           style={{
@@ -323,8 +323,8 @@ export default function RepairOrderManagement() {
                           {meta.label}
                         </span>
                       </td>
-                      <td>{money(o.totalAmount)}</td>
-                      <td>
+                      <td data-label="Total">{money(o.totalAmount)}</td>
+                      <td data-label="Actions">
                         <div className={styles.actions}>
                           <button
                             className={styles.actBtn}

@@ -334,3 +334,102 @@
   color: #7a9aaa;
   font-size: 13px;
 }
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 1023.98px) {
+  .chartsRow,
+  .rankingsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .kpiRow {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .kpiValue {
+    font-size: 24px;
+  }
+
+  .chartCard {
+    padding: 20px;
+  }
+
+  .chartCanvas {
+    height: 180px;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .kpiRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .kpiCard {
+    padding: 16px;
+  }
+
+  .kpiValue {
+    font-size: 20px;
+  }
+
+  .kpiAccent {
+    height: 24px;
+  }
+
+  .chartsRow,
+  .rankingsRow {
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .chartCard,
+  .rankCard {
+    padding: 18px;
+  }
+
+  .chartCanvas {
+    height: 160px;
+  }
+
+  .statusLabel {
+    width: 70px;
+    font-size: 11px;
+  }
+
+  .statusTrack {
+    height: 20px;
+  }
+
+  .quickRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quickBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rankBadge {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .rankName {
+    font-size: 13px;
+  }
+
+  .rankValue {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 419.98px) {
+  .kpiRow {
+    grid-template-columns: 1fr;
+  }
+}

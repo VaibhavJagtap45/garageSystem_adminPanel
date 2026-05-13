@@ -177,18 +177,18 @@ export default function TallyExport() {
               <tbody>
                 {rows.map((r, i) => (
                   <tr key={i}>
-                    <td>{r.date}</td>
-                    <td>{r.invoiceNo}</td>
-                    <td>{r.garageName}</td>
-                    <td>{r.ownerName}</td>
-                    <td>{r.customerName}</td>
-                    <td>₹{r.serviceAmount.toLocaleString("en-IN")}</td>
-                    <td>₹{r.discount.toLocaleString("en-IN")}</td>
-                    <td>₹{r.gst.toLocaleString("en-IN")}</td>
-                    <td>₹{r.totalAmount.toLocaleString("en-IN")}</td>
-                    <td>₹{r.paidAmount.toLocaleString("en-IN")}</td>
-                    <td className={STATUS_CLS[r.paymentStatus] || ""}>{r.paymentStatus}</td>
-                    <td>{r.paymentMode}</td>
+                    <td data-label="Date">{r.date}</td>
+                    <td data-label="Invoice">{r.invoiceNo}</td>
+                    <td data-label="Garage">{r.garageName}</td>
+                    <td data-label="Owner">{r.ownerName}</td>
+                    <td data-label="Customer">{r.customerName}</td>
+                    <td data-label="Service Amt">₹{r.serviceAmount.toLocaleString("en-IN")}</td>
+                    <td data-label="Discount">₹{r.discount.toLocaleString("en-IN")}</td>
+                    <td data-label="GST">₹{r.gst.toLocaleString("en-IN")}</td>
+                    <td data-label="Total">₹{r.totalAmount.toLocaleString("en-IN")}</td>
+                    <td data-label="Paid">₹{r.paidAmount.toLocaleString("en-IN")}</td>
+                    <td data-label="Status" className={STATUS_CLS[r.paymentStatus] || ""}>{r.paymentStatus}</td>
+                    <td data-label="Mode">{r.paymentMode}</td>
                   </tr>
                 ))}
               </tbody>

@@ -13,6 +13,7 @@
 .modal {
   width: min(960px, 100%);
   max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
   display: flex;
   flex-direction: column;
   border-radius: 32px;
@@ -424,28 +425,86 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 639.98px) {
+  .overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
   .modal {
-    max-height: calc(100vh - 20px);
-    border-radius: 24px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 95vh;
+    max-height: 95dvh;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .header {
+    padding: 18px 18px 14px;
+  }
+
+  .body {
+    padding: 16px 18px 22px;
+    padding-bottom: max(22px, env(safe-area-inset-bottom));
   }
 
   .section,
   .toggleCard,
   .statusOption {
-    border-radius: 20px;
+    border-radius: 18px;
+  }
+
+  .sectionHeader {
+    padding: 16px 16px 12px;
+  }
+
+  .sectionBody {
+    padding: 14px 16px 16px;
+    gap: 14px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.15rem;
+  }
+
+  .iconShell {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .modalIcon {
+    width: 20px;
+    height: 20px;
   }
 
   .headerIdentity {
     flex-direction: column;
   }
 
+  .input {
+    border-radius: 14px;
+    padding: 12px 14px;
+  }
+
+  .toggleCard {
+    padding: 14px;
+  }
+
   .footer {
     flex-direction: column-reverse;
+    gap: 10px;
   }
 
   .cancelBtn,
   .saveBtn {
     width: 100%;
+    min-width: 0;
+    padding: 13px 16px;
+    border-radius: 14px;
   }
 }

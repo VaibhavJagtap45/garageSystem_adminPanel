@@ -293,7 +293,7 @@ export default function InvoiceManagement() {
                     PAYMENT_STATUS_META.unpaid;
                   return (
                     <tr key={inv._id}>
-                      <td>
+                      <td data-label="Invoice No.">
                         <button
                           className={styles.infoLink}
                           onClick={() => openEdit(inv)}
@@ -301,14 +301,14 @@ export default function InvoiceManagement() {
                           {inv.invoiceNo || String(inv._id).slice(-6)}
                         </button>
                       </td>
-                      <td>
+                      <td data-label="Customer">
                         {inv.customerId?.fullName || "-"}
                         <br />
                         <small style={{ color: "#7a9aaa" }}>
                           {inv.customerId?.phoneNo || ""}
                         </small>
                       </td>
-                      <td>
+                      <td data-label="Vehicle">
                         {inv.vehicleId
                           ? `${inv.vehicleId.vehicleBrand || ""} ${inv.vehicleId.vehicleModel || ""}`.trim() || "-"
                           : "-"}
@@ -317,10 +317,10 @@ export default function InvoiceManagement() {
                           {inv.vehicleId?.vehicleRegisterNo || ""}
                         </small>
                       </td>
-                      <td>{fmtDate(inv.createdAt)}</td>
-                      <td>{money(inv.totalAmount)}</td>
-                      <td>{money(inv.paidAmount)}</td>
-                      <td>
+                      <td data-label="Date">{fmtDate(inv.createdAt)}</td>
+                      <td data-label="Total">{money(inv.totalAmount)}</td>
+                      <td data-label="Paid">{money(inv.paidAmount)}</td>
+                      <td data-label="Status">
                         <span
                           className={styles.badge}
                           style={{
@@ -331,7 +331,7 @@ export default function InvoiceManagement() {
                           {meta.label}
                         </span>
                       </td>
-                      <td>
+                      <td data-label="Actions">
                         <div className={styles.actions}>
                           <button
                             className={styles.actBtn}

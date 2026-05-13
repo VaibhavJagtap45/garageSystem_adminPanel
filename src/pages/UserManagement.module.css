@@ -249,3 +249,126 @@
   color: #7a9aaa;
   font-size: 13.5px;
 }
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 767.98px) {
+  .statsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .statValue {
+    font-size: 20px;
+  }
+
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .searchInput,
+  .roleFilter {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .tableHeader {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .statsRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Table → cards reflow ────────────────────────────── */
+  .tableCard {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .tableHeader {
+    background: #fff;
+    border: 1px solid rgba(16, 34, 43, 0.08);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+  }
+
+  .tableWrap {
+    overflow: visible;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    background: #fff;
+    border: 1px solid rgba(16, 34, 43, 0.08);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(16, 34, 43, 0.04);
+  }
+
+  .table tr:hover td {
+    background: transparent;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px solid rgba(16, 34, 43, 0.05);
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .table td:last-child {
+    border-bottom: none;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #5a7a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    flex-shrink: 0;
+    text-align: left;
+    padding-top: 2px;
+  }
+
+  .pagination {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(16, 34, 43, 0.08);
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+}

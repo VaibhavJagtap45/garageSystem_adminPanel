@@ -244,3 +244,81 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 767.98px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .headerTitle {
+    font-size: 20px;
+  }
+  .headerActions {
+    flex-wrap: wrap;
+  }
+  .filterBar {
+    grid-template-columns: 1fr;
+    padding: 14px;
+    gap: 10px;
+  }
+  .filterApply {
+    grid-column: auto;
+    width: 100%;
+  }
+  .kpiGrid {
+    gap: 12px;
+  }
+  .kpiValue {
+    font-size: 20px;
+  }
+  .card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+  /* Card-style reflow for analytics tables */
+  .table {
+    font-size: 13px;
+  }
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody {
+    display: block;
+  }
+  .table tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    padding: 10px 12px;
+    border: 1px solid #eef0f3;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: #fff;
+  }
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border: none;
+    grid-column: 1 / -1;
+  }
+  .table td::before {
+    content: attr(data-label);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .table td.amount {
+    text-align: right;
+  }
+}

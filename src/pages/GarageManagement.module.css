@@ -1,6 +1,6 @@
 .statsRow {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 14px;
   margin-bottom: 20px;
 }
@@ -587,9 +587,16 @@
   .toolbarActions {
     justify-content: flex-start;
   }
+
+  .catalogModal,
+  .detailModal {
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+  }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 639.98px) {
   .statsRow,
   .catalogGrid,
   .catalogList,
@@ -598,8 +605,23 @@
     grid-template-columns: 1fr;
   }
 
+  .statValue {
+    font-size: 20px;
+  }
+
   .tabsBar {
     overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabsBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex-shrink: 0;
   }
 
   .addBtn,
@@ -608,8 +630,166 @@
     justify-content: center;
   }
 
+  .toolbarActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* ── Table → cards reflow ────────────────────────────── */
+  .tableCard {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .tableWrap {
+    overflow: visible;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    background: #fff;
+    border: 1px solid rgba(16, 34, 43, 0.08);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(16, 34, 43, 0.04);
+  }
+
+  .table tr:hover td {
+    background: transparent;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px solid rgba(16, 34, 43, 0.05);
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .table td:last-child {
+    border-bottom: none;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #5a7a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    flex-shrink: 0;
+    text-align: left;
+    padding-top: 2px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .garageCell {
+    justify-content: flex-end;
+  }
+
+  /* Inside the GarageDetail modal: same reflow for nested tables */
+  .detailTableWrap {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .detailTable,
+  .detailTable thead,
+  .detailTable tbody,
+  .detailTable tr,
+  .detailTable td {
+    display: block;
+    width: 100%;
+  }
+
+  .detailTable thead {
+    display: none;
+  }
+
+  .detailTable tr {
+    background: rgba(16, 34, 43, 0.025);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+  }
+
+  .detailTable td {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 0;
+    border-top: none;
+    border-bottom: 1px dashed rgba(16, 34, 43, 0.06);
+    white-space: normal;
+  }
+
+  .detailTable td:last-child {
+    border-bottom: none;
+  }
+
+  .detailTable td::before {
+    content: attr(data-label);
+    font-size: 10px;
+    font-weight: 700;
+    color: #5a7a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  /* Modals → bottom sheet on phones */
+  .overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
   .catalogModal,
   .detailModal {
-    padding: 18px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 92vh;
+    max-height: 92dvh;
+    border-radius: 22px 22px 0 0;
+    padding: 20px 18px;
+  }
+
+  .confirmBox {
+    width: calc(100% - 28px);
+    margin: 0 14px;
+    padding: 22px;
+  }
+
+  .modalHeader {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .table tr {
+    padding: 12px 14px;
   }
 }

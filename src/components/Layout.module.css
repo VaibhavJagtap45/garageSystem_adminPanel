@@ -1,6 +1,30 @@
 .layout {
   display: flex;
   min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ── Mobile drawer backdrop ────────────────────────────── */
+
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 1023.98px) {
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 18, 23, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 95;
+    animation: backdropIn 0.18s ease;
+  }
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ── Sidebar ────────────────────────────────────────────── */
@@ -9,8 +33,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: var(--admin-sidebar-w, 260px);
   height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(175deg, #0d1f28 0%, #132e3a 60%, #102830 100%);
@@ -18,9 +43,12 @@
   z-index: 100;
   overflow-y: auto;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .sidebarBrand {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -50,6 +78,7 @@
 .brandText {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .brandName {
@@ -64,6 +93,32 @@
   font-size: 11px;
   color: #7a9aaa;
   margin-top: 1px;
+}
+
+.drawerClose {
+  display: none;
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #c9d6dc;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.drawerClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.drawerClose:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .navSection {
@@ -134,24 +189,52 @@
 .topbar {
   position: fixed;
   top: 0;
-  left: 260px;
+  left: var(--admin-sidebar-w, 260px);
   right: 0;
-  height: 64px;
+  height: var(--admin-topbar-h, 64px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
+  padding-top: env(safe-area-inset-top);
   background: rgba(250, 246, 239, 0.92);
   backdrop-filter: blur(14px) saturate(1.1);
   border-bottom: 1px solid var(--admin-border, rgba(16, 34, 43, 0.06));
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
   z-index: 90;
+  gap: 12px;
 }
 
 .topbarLeft {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.hamburger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(16, 34, 43, 0.05);
+  border: 1px solid rgba(16, 34, 43, 0.08);
+  color: #10222b;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.hamburger svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hamburger:hover {
+  background: rgba(16, 34, 43, 0.09);
 }
 
 .pageTitle {
@@ -160,12 +243,17 @@
   font-size: 18px;
   color: #10222b;
   letter-spacing: -0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .topbarRight {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .topbarPill {
@@ -207,6 +295,7 @@
   border: 1px solid rgba(16, 34, 43, 0.08);
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .logoutBtn:hover {
@@ -223,9 +312,95 @@
 /* ── Content ────────────────────────────────────────────── */
 
 .content {
-  margin-left: 260px;
-  margin-top: 64px;
-  min-height: calc(100vh - 64px);
+  margin-left: var(--admin-sidebar-w, 260px);
+  margin-top: var(--admin-topbar-h, 64px);
+  min-height: calc(100vh - var(--admin-topbar-h, 64px));
+  min-height: calc(100dvh - var(--admin-topbar-h, 64px));
   padding: 28px 32px 40px;
+  padding-left: max(32px, env(safe-area-inset-left));
+  padding-right: max(32px, env(safe-area-inset-right));
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
   max-width: 1680px;
+}
+
+/* ── Responsive: tablet and below ───────────────────────── */
+
+@media (max-width: 1023.98px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.24s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 8px 0 32px rgba(10, 18, 23, 0);
+    width: min(280px, 86vw);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+    box-shadow: 8px 0 32px rgba(10, 18, 23, 0.28);
+  }
+
+  .drawerClose {
+    display: flex;
+  }
+
+  .topbar {
+    left: 0;
+    padding: 0 16px;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px 18px 32px;
+    padding-left: max(18px, env(safe-area-inset-left));
+    padding-right: max(18px, env(safe-area-inset-right));
+  }
+
+  .pageTitle {
+    font-size: 16px;
+  }
+
+  .topbarPill {
+    display: none;
+  }
+
+  .logoutBtn span {
+    display: none;
+  }
+
+  .logoutBtn {
+    padding: 8px 10px;
+  }
+}
+
+/* ── Responsive: phones ─────────────────────────────────── */
+
+@media (max-width: 639.98px) {
+  .topbar {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .content {
+    padding: 16px 14px 28px;
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+
+  .topbarRight {
+    gap: 8px;
+  }
+
+  .pageTitle {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 419.98px) {
+  .pageTitle {
+    /* On very small screens, prioritize the garage selector by hiding the title */
+    display: none;
+  }
 }

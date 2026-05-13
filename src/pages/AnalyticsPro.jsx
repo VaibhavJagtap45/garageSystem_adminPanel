@@ -413,9 +413,9 @@ export default function AnalyticsPro() {
             <tbody>
               {(data?.topFranchises || []).map((f) => (
                 <tr key={f.franchiseId}>
-                  <td>{f.name}</td>
-                  <td>{f.garageCount}</td>
-                  <td className={styles.amount}>{formatINR(f.revenue)}</td>
+                  <td data-label="Franchise">{f.name}</td>
+                  <td data-label="Garages">{f.garageCount}</td>
+                  <td data-label="Revenue" className={styles.amount}>{formatINR(f.revenue)}</td>
                 </tr>
               ))}
               {(!data?.topFranchises || data.topFranchises.length === 0) && (
@@ -442,7 +442,7 @@ export default function AnalyticsPro() {
             <tbody>
               {(data?.topGarages || []).map((g) => (
                 <tr key={g.garageId}>
-                  <td>
+                  <td data-label="Garage">
                     <div style={{ fontWeight: 600 }}>{g.name}</div>
                     {g.franchise && (
                       <div style={{ fontSize: 11, color: "#6b7280" }}>
@@ -450,8 +450,8 @@ export default function AnalyticsPro() {
                       </div>
                     )}
                   </td>
-                  <td>{formatNum(g.invoices)}</td>
-                  <td className={styles.amount}>{formatINR(g.revenue)}</td>
+                  <td data-label="Invoices">{formatNum(g.invoices)}</td>
+                  <td data-label="Revenue" className={styles.amount}>{formatINR(g.revenue)}</td>
                 </tr>
               ))}
               {(!data?.topGarages || data.topGarages.length === 0) && (

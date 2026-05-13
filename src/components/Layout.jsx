@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import RoleGate from "./RoleGate";
 import GarageSelector from "./GarageSelector";
@@ -110,6 +110,29 @@ const NAV = [
 export default function Layout({ title, children }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // Auto-close drawer when route changes
+  useEffect(() => {
+    setDrawerOpen(false);
+  }, [location.pathname]);
+
+  // Body scroll-lock while drawer is open
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
+    document.body.classList.add("drawer-open");
+    return () => document.body.classList.remove("drawer-open");
+  }, [drawerOpen]);
+
+  // Close drawer with Esc key
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key === "Escape") setDrawerOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [drawerOpen]);
 
   const handleLogout = () => {
     clearAdminSession();
@@ -118,7 +141,18 @@ export default function Layout({ title, children }) {
 
   return (
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
+      {drawerOpen && (
+        <div
+          className={styles.backdrop}
+          onClick={() => setDrawerOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      <aside
+        className={`${styles.sidebar} ${drawerOpen ? styles.sidebarOpen : ""}`}
+        aria-label="Primary navigation"
+      >
         <div className={styles.sidebarBrand}>
           <div className={styles.brandMark}>
             <span className={styles.brandLetter}>AG</span>
@@ -127,6 +161,24 @@ export default function Layout({ title, children }) {
             <span className={styles.brandName}>Aapno Garage</span>
             <span className={styles.brandSub}>Admin Console</span>
           </div>
+          <button
+            type="button"
+            className={styles.drawerClose}
+            onClick={() => setDrawerOpen(false)}
+            aria-label="Close menu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 6L6 18" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         {NAV.map((section) => (
@@ -163,6 +215,26 @@ export default function Layout({ title, children }) {
 
       <div className={styles.topbar}>
         <div className={styles.topbarLeft}>
+          <button
+            type="button"
+            className={styles.hamburger}
+            onClick={() => setDrawerOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={drawerOpen}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M3 6h18" />
+              <path d="M3 12h18" />
+              <path d="M3 18h18" />
+            </svg>
+          </button>
           <h1 className={styles.pageTitle}>{title || "Dashboard"}</h1>
         </div>
         <div className={styles.topbarRight}>

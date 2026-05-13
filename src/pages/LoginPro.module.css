@@ -1,10 +1,11 @@
 .page {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: clamp(16px, 4vw, 32px);
   overflow: hidden;
 }
 
@@ -329,27 +330,31 @@
 }
 
 @media (max-width: 980px) {
-  .page {
-    padding: 22px;
-  }
-
   .shell {
     grid-template-columns: 1fr;
+    border-radius: 26px;
   }
 
   .storyPanel,
   .formPanel {
-    padding: 34px;
+    padding: 32px;
   }
 
   .heroTitle {
     max-width: 100%;
   }
+
+  .storyPanel::after {
+    width: 240px;
+    height: 240px;
+    right: -90px;
+    top: -60px;
+  }
 }
 
 @media (max-width: 640px) {
-  .page {
-    padding: 16px;
+  .shell {
+    border-radius: 22px;
   }
 
   .storyPanel,
@@ -359,29 +364,84 @@
 
   .brandRow {
     align-items: flex-start;
+    gap: 12px;
   }
 
   .brandMark {
-    width: 62px;
-    height: 62px;
+    width: 56px;
+    height: 56px;
   }
 
   .brandRing {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
   }
 
   .brandCore {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
+    border-radius: 11px;
   }
 
   .heroTitle {
-    margin-top: 28px;
-    font-size: 2.3rem;
+    margin-top: 24px;
+    font-size: clamp(1.85rem, 8vw, 2.3rem);
+  }
+
+  .heroCopy {
+    margin-top: 14px;
+    font-size: 0.94rem;
+  }
+
+  .storyCard {
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .featureList {
+    gap: 14px;
+  }
+
+  .featureIconWrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .formIntro {
+    margin-bottom: 22px;
   }
 
   .formTitle {
-    font-size: 1.75rem;
+    margin-top: 12px;
+    font-size: 1.55rem;
+  }
+
+  .input {
+    border-radius: 14px;
+    padding: 13px 14px;
+  }
+
+  .btn {
+    padding: 14px 16px;
+    border-radius: 14px;
+    font-size: 0.94rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .storyPanel,
+  .formPanel {
+    padding: 20px;
+  }
+
+  .heroTitle {
+    font-size: 1.7rem;
+  }
+
+  .formTitle {
+    font-size: 1.4rem;
   }
 }

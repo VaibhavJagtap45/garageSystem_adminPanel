@@ -290,7 +290,7 @@ export default function GarageManagement() {
                   const status = STATUS_META[g.approvalStatus] || STATUS_META.pending;
                   return (
                     <tr key={g._id}>
-                      <td>
+                      <td data-label="Garage">
                         <div className={styles.garageCell}>
                           <button className={styles.infoLink} onClick={() => openGarageDetail(g)}>
                             {g.garageName || "Unnamed"}
@@ -298,13 +298,13 @@ export default function GarageManagement() {
                           {g.isPrimaryBranch && <span className={styles.primaryPill}>Primary</span>}
                         </div>
                       </td>
-                      <td>{owner.fullName || g.garageOwnerName || "-"}<br /><small style={{ color: "#7a9aaa" }}>{owner.phoneNo || ""}</small></td>
-                      <td>{GARAGE_TYPE_LABELS[g.garageType] || g.garageType}</td>
-                      <td>{g.garageContactNumber || "-"}</td>
-                      <td>{g.state || "-"}</td>
-                      <td><span className={styles.badge} style={{ background: `${status.color}18`, color: status.color }}>{status.label}</span></td>
-                      <td>{fmtDate(g.createdAt)}</td>
-                      <td>
+                      <td data-label="Owner">{owner.fullName || g.garageOwnerName || "-"}<br /><small style={{ color: "#7a9aaa" }}>{owner.phoneNo || ""}</small></td>
+                      <td data-label="Type">{GARAGE_TYPE_LABELS[g.garageType] || g.garageType}</td>
+                      <td data-label="Contact">{g.garageContactNumber || "-"}</td>
+                      <td data-label="State">{g.state || "-"}</td>
+                      <td data-label="Status"><span className={styles.badge} style={{ background: `${status.color}18`, color: status.color }}>{status.label}</span></td>
+                      <td data-label="Registered">{fmtDate(g.createdAt)}</td>
+                      <td data-label="Actions">
                         <div className={styles.actions}>
                           {g.approvalStatus === "pending" && (
                             <>
@@ -545,7 +545,7 @@ function DetailTable({ title, columns, rows, empty }) {
             <thead><tr>{columns.map((c) => <th key={c}>{c}</th>)}</tr></thead>
             <tbody>
               {rows.map((row, idx) => (
-                <tr key={idx}>{row.map((cell, cIdx) => <td key={cIdx}>{cell}</td>)}</tr>
+                <tr key={idx}>{row.map((cell, cIdx) => <td key={cIdx} data-label={columns[cIdx]}>{cell}</td>)}</tr>
               ))}
             </tbody>
           </table>

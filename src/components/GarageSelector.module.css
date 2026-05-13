@@ -162,3 +162,48 @@
   letter-spacing: 0.4px;
   vertical-align: middle;
 }
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 767.98px) {
+  .trigger {
+    max-width: 200px;
+    padding: 7px 10px;
+    font-size: 12.5px;
+  }
+
+  .triggerLabel {
+    font-size: 12.5px;
+  }
+
+  .popover {
+    /* Anchor to the right edge of the topbar, fill the screen on phones */
+    position: fixed;
+    top: var(--admin-topbar-h, 56px);
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: calc(100vh - var(--admin-topbar-h, 56px) - 16px);
+    max-height: calc(100dvh - var(--admin-topbar-h, 56px) - 16px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(16, 34, 43, 0.22);
+  }
+
+  .list {
+    max-height: none;
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 419.98px) {
+  .trigger {
+    max-width: 160px;
+  }
+
+  .triggerLabel {
+    max-width: 110px;
+  }
+}

@@ -117,20 +117,20 @@ export default function UserManagement() {
               <tbody>
                 {users.map((u) => (
                   <tr key={u._id}>
-                    <td>{u.fullName || "—"}</td>
-                    <td>{u.phoneNo || "—"}</td>
-                    <td>{u.emailId || "—"}</td>
-                    <td>
+                    <td data-label="Name">{u.fullName || "—"}</td>
+                    <td data-label="Phone">{u.phoneNo || "—"}</td>
+                    <td data-label="Email">{u.emailId || "—"}</td>
+                    <td data-label="Role">
                       <span className={`${styles.roleBadge} ${ROLE_CLASSES[u.role] || styles.roleDefault}`}>
                         {u.role}
                       </span>
                     </td>
-                    <td>
+                    <td data-label="Verified">
                       <span className={u.isVerified ? styles.verifiedBadge : styles.unverifiedBadge}>
                         {u.isVerified ? "Yes" : "No"}
                       </span>
                     </td>
-                    <td>{fmtDate(u.createdAt)}</td>
+                    <td data-label="Registered">{fmtDate(u.createdAt)}</td>
                   </tr>
                 ))}
               </tbody>
