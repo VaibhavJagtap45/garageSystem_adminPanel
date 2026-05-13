@@ -1,0 +1,164 @@
+.wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5a7a8a;
+  background: rgba(16, 34, 43, 0.04);
+  border: 1px solid rgba(16, 34, 43, 0.08);
+  cursor: pointer;
+  max-width: 260px;
+  transition: all 0.15s ease;
+}
+
+.trigger:hover {
+  background: rgba(16, 34, 43, 0.07);
+}
+
+.triggerSet {
+  background: rgba(32, 93, 112, 0.08);
+  border-color: rgba(32, 93, 112, 0.2);
+  color: #10222b;
+  font-weight: 600;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.triggerLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.caret {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  width: 360px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(16, 34, 43, 0.08);
+  box-shadow: 0 12px 32px rgba(16, 34, 43, 0.16);
+  z-index: 200;
+  overflow: hidden;
+}
+
+.searchRow {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(16, 34, 43, 0.06);
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 34, 43, 0.12);
+  font-size: 13px;
+  color: #10222b;
+  background: #fff;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: rgba(32, 93, 112, 0.45);
+}
+
+.clearBtn {
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #b84538;
+  background: rgba(184, 69, 56, 0.08);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.listEmpty {
+  padding: 24px 16px;
+  text-align: center;
+  color: #7a9aaa;
+  font-size: 13px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(16, 34, 43, 0.03);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background: rgba(32, 93, 112, 0.04);
+}
+
+.itemActive {
+  background: rgba(32, 93, 112, 0.08);
+}
+
+.itemActive:hover {
+  background: rgba(32, 93, 112, 0.12);
+}
+
+.itemName {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #10222b;
+}
+
+.itemMeta {
+  font-size: 11.5px;
+  color: #7a9aaa;
+}
+
+.itemStatus {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #d99124;
+  background: rgba(217, 145, 36, 0.12);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  vertical-align: middle;
+}

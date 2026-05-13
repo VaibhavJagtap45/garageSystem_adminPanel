@@ -1,0 +1,231 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ────────────────────────────────────────────── */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(175deg, #0d1f28 0%, #132e3a 60%, #102830 100%);
+  color: #c9d6dc;
+  z-index: 100;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebarBrand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brandMark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d55a34, #e07a56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brandLetter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: #f5f4ef;
+  letter-spacing: -0.3px;
+}
+
+.brandSub {
+  font-size: 11px;
+  color: #7a9aaa;
+  margin-top: 1px;
+}
+
+.navSection {
+  padding: 16px 12px 8px;
+}
+
+.navLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #5a7a8a;
+  padding: 0 10px 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #a0b8c4;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e8f0f4;
+}
+
+.navItemActive {
+  background: rgba(213, 90, 52, 0.15);
+  color: #f5c4a8;
+  font-weight: 600;
+}
+
+.navItemActive:hover {
+  background: rgba(213, 90, 52, 0.2);
+}
+
+.navIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.navItemActive .navIcon {
+  opacity: 1;
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  padding: 16px 12px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Topbar ─────────────────────────────────────────────── */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 260px;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid var(--admin-border, rgba(16, 34, 43, 0.06));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  z-index: 90;
+}
+
+.topbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: #10222b;
+  letter-spacing: -0.3px;
+}
+
+.topbarRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbarPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #5a7a8a;
+  background: rgba(16, 34, 43, 0.04);
+  border: 1px solid rgba(16, 34, 43, 0.06);
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1f7a5c;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #10222b;
+  background: rgba(16, 34, 43, 0.04);
+  border: 1px solid rgba(16, 34, 43, 0.08);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(184, 69, 56, 0.08);
+  border-color: rgba(184, 69, 56, 0.2);
+  color: #b84538;
+}
+
+.logoutIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Content ────────────────────────────────────────────── */
+
+.content {
+  margin-left: 260px;
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  padding: 28px 32px 40px;
+  max-width: 1680px;
+}
